@@ -5,6 +5,8 @@
 
 #include "vm.h"
 
+using namespace violet;
+
 int main(int argc, char *argv[])
 {
     Vm *vm = new Vm("t.s");
