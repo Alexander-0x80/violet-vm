@@ -3,29 +3,13 @@
 
 #include <iostream>
 #include <vector>
-#include <string>
-#include <fstream>
+
+#include "vtypes.h"
 
 #define VIOLET_REGS_N 4
 
-typedef unsigned char  u8;
-typedef unsigned short u16;
-
 namespace violet
 {
-    const unsigned int i_halt  {0};
-    const unsigned int i_loadi {0x1};
-    const unsigned int i_add   {0x2};
-
-    struct instruction
-    {
-        int code;
-        int r1;
-        int r2;
-        int r3;
-        int imm;
-    };
-
     class Vm
     {
         bool running;
@@ -34,7 +18,7 @@ namespace violet
         u16  pc;
 
     public:
-        Vm(const std::string&);
+        Vm(const std::vector<u16>);
         ~Vm();
 
         u16 fetch();
@@ -42,7 +26,7 @@ namespace violet
         instruction decode(const int) const;
 
     private:
-        std::vector<u16> loadProgram(const std::string) const;
+
     };
 }
 

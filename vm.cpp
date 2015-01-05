@@ -3,9 +3,9 @@
 namespace violet
 {
 
-    Vm::Vm(const std::string& filename):
+    Vm::Vm(const std::vector<u16> program):
         running(false),
-        program(loadProgram(filename)),
+        program(program),
         pc(0)
     {
 
@@ -65,27 +65,6 @@ namespace violet
         decoded.imm  = (instr & 0xFF);
 
         return decoded;
-    }
-
-    std::vector<u16> Vm::loadProgram(const std::string filename) const
-    {
-        u16 instr;
-        u8  bytes[2];
-        std::vector<u16> result;
-
-        std::ifstream file(filename, std::ios::binary);
-        if (file.fail())
-        {
-            std::cerr << "Could not load program" << std::endl;
-        }
-
-        while(file.read((char*)bytes, 2))
-        {
-            instr = bytes[1] | bytes[0] << 8;
-            result.push_back(instr);
-        }
-
-        return result;
     }
 }
 
