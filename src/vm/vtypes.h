@@ -4,7 +4,10 @@
 using u8  = unsigned char;    // At least 8-bits
 using u16 = unsigned short;   // At least 16-bits   -  (Usually)
 
-namespace violet {
+namespace violet
+{
+
+    const unsigned int REGS_N  {4};
 
     const unsigned int i_halt  {0};
     const unsigned int i_loadi {0x1};

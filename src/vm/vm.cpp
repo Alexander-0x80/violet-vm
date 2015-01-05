@@ -16,11 +16,18 @@ namespace violet
 
     }
 
-    void Vm::run()
+
+    u16 Vm::fetch()
+    {
+        return program.at(pc++);
+    }
+
+    int Vm::run()
     {
         running = true;
         instruction instr;
 
+        if (program.empty()) return 1;
         while(running)
         {
             instr = decode(fetch());
@@ -42,13 +49,19 @@ namespace violet
                     break;
             }
         }
-        std::cout << instr.code << std::endl;
 
+        return 0;
     }
 
-    u16 Vm::fetch()
+    std::vector<u16> Vm::dump_regs() const
     {
-        return program.at(pc++);
+        std::vector<u16> rdump;
+        for (auto r: regs)
+        {
+            rdump.push_back(r);
+        }
+
+        return rdump;
     }
 
     instruction Vm::decode(const int instr) const
@@ -66,5 +79,6 @@ namespace violet
 
         return decoded;
     }
+
 }
 

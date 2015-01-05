@@ -2,6 +2,7 @@
 
 namespace violet
 {
+
     namespace utils
     {
         std::vector<u16> load_program_file(const std::string filename)
@@ -14,6 +15,7 @@ namespace violet
             if (file.fail())
             {
                 std::cerr << "Could not load program" << std::endl;
+                return result;
             }
 
             while(file.read((char*)bytes, 2))
@@ -25,4 +27,5 @@ namespace violet
             return result;
         }
     }
+
 }

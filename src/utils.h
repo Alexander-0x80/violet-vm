@@ -6,14 +6,16 @@
 #include <string>
 #include <fstream>
 
-#include "vtypes.h"
+#include "vm/vtypes.h"
 
 namespace violet
 {
+
     namespace utils
     {
         std::vector<u16> load_program_file(const std::string);
     }
+
 };
 
 #endif // UTILS_H

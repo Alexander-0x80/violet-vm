@@ -6,15 +6,16 @@
 
 #include "vtypes.h"
 
-#define VIOLET_REGS_N 4
+//#define VIOLET_REGS_N 4
 
 namespace violet
 {
+
     class Vm
     {
         bool running;
         std::vector<u16> program;
-        u16  regs[VIOLET_REGS_N];
+        u16  regs[REGS_N];
         u16  pc;
 
     public:
@@ -22,12 +23,11 @@ namespace violet
         ~Vm();
 
         u16 fetch();
-        void run();
+        int run();
+        std::vector<u16> dump_regs() const;
         instruction decode(const int) const;
-
-    private:
-
     };
+
 }
 
 #endif // VM_H
