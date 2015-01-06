@@ -1,7 +1,7 @@
 #include <vector>
 
 #include "vm/vm.h"
-#include "utils.h"
+#include "etc/utils.h"
 
 using namespace violet;
 

@@ -64,20 +64,20 @@ namespace violet
         return rdump;
     }
 
-    instruction Vm::decode(const int instr) const
+    instruction Vm::decode(const unsigned int opcode) const
     {
-        instruction decoded;
+        instruction i;
         // Bits 15-12  Instruction number
         // Bits 11-8   Register number
         // Bits 7-0    Immediate value
 
-        decoded.code = (instr & 0xF000) >> 12;
-        decoded.r1   = (instr & 0xF00)  >>  8;
-        decoded.r2   = (instr & 0xF0)   >>  4;
-        decoded.r3   = (instr & 0xF);
-        decoded.imm  = (instr & 0xFF);
+        i.code = (opcode & 0xF000) >> 12;
+        i.r1   = (opcode & 0xF00)  >>  8;
+        i.r2   = (opcode & 0xF0)   >>  4;
+        i.r3   = (opcode & 0xF);
+        i.imm  = (opcode & 0xFF);
 
-        return decoded;
+        return i;
     }
 
 }

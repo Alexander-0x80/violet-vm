@@ -6,8 +6,6 @@
 
 #include "vtypes.h"
 
-//#define VIOLET_REGS_N 4
-
 namespace violet
 {
 
@@ -25,7 +23,7 @@ namespace violet
         u16 fetch();
         int run();
         std::vector<u16> dump_regs() const;
-        instruction decode(const int) const;
+        instruction decode(const unsigned int) const;
     };
 
 }
