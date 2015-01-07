@@ -17,7 +17,9 @@ set(VM_FILES
 set(ASM_FILES
     asm/main.cpp
     asm/vlasm.cpp
-    asm/vlasm.h)
+    asm/vlasm.h
+    etc/utils.cpp
+    etc/utils.h)
 
 add_executable(violet ${VM_FILES})
 add_executable(vlasm ${ASM_FILES})
