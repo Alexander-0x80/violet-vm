@@ -12,5 +12,10 @@ int main(int argc, char *argv[])
     Vm *vm = new Vm(program);
     vm_res = vm->run();
 
+    for (auto r : vm->dump_regs())
+    {
+        std::cout << r << " ";
+    }   std::cout << std::endl;
+
     return vm_res;
 }

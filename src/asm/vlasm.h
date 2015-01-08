@@ -17,12 +17,11 @@ namespace violet
         const std::string i_add("add");
 
         const std::unordered_map<std::string, unsigned int>
-        registers = {
+        registers {
                 {"r0", 0},
                 {"r1", 1},
                 {"r2", 2}
         };
-
 
         std::vector<unsigned int> parse_source(const std::vector<std::string>);
         std::vector<std::string> parse_line(const std::string);

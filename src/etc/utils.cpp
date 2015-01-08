@@ -21,10 +21,12 @@ namespace violet
 
             while(file.read((char*)bytes, 2))
             {
-                instr = bytes[1] | bytes[0] << 8;
+                // Little endian
+                instr = bytes[0] | bytes[1] << 8;
                 result.push_back(instr);
             }
 
+            file.close();
             return result;
         }
 
@@ -46,7 +48,28 @@ namespace violet
                 result.push_back(line);
             }
 
+            file.close();
             return result;
+        }
+
+        int write_program_file(
+                const std::string filename,
+                const std::vector<unsigned int> program)
+        {
+            std::ofstream out(filename, std::ios::trunc | std::ios::binary);
+            if (out.fail())
+            {
+                std::cerr << "Could not write program file" << std::endl;
+                return 1;
+            }
+
+            for (auto i : program)
+            {
+                out.write(reinterpret_cast<const char *>(&i), sizeof(u16));
+            }
+
+            out.close();
+            return 0;
         }
     }
 

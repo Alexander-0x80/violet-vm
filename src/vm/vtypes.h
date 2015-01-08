@@ -7,8 +7,9 @@ using u16 = unsigned short;   // At least 16-bits   -  (Usually)
 namespace violet
 {
 
-    const unsigned int REGS_N  {4};
+    const unsigned int REGS_N  {3};
 
+    // Instructions
     const unsigned int i_halt  {0};
     const unsigned int i_loadi {0x1};
     const unsigned int i_add   {0x2};
@@ -16,9 +17,9 @@ namespace violet
     struct instruction
     {
         unsigned int code;
+        unsigned int r0;
         unsigned int r1;
         unsigned int r2;
-        unsigned int r3;
         int imm;
     };
 

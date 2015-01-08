@@ -1,2 +1,6 @@
 src/bin/*
+src/CMakeCache.txt
+src/cmake_install.cmake
+src/Makefile
+src/CMakeFiles
 .idea

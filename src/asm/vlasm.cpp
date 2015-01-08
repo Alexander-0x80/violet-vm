@@ -1,6 +1,5 @@
 #include <sstream>
 #include <iostream>
-#include <algorithm>
 #include <iterator>
 
 #include "vlasm.h"
@@ -29,8 +28,10 @@ namespace violet
         parse_line(const std::string line)
         {
             std::istringstream iss(line);
-            std::vector<std::string> tokens{std::istream_iterator<std::string>{iss},
-                    std::istream_iterator<std::string>{}};
+            std::vector<std::string> tokens {
+                    std::istream_iterator<std::string>{iss},
+                    std::istream_iterator<std::string>{}
+            };
 
             return tokens;
         }
@@ -49,7 +50,7 @@ namespace violet
                 if (tokens.size() != 3) die("Invalid load operation");
                 opcode = (violet::i_loadi      << 12) |
                          (parse_reg(tokens[1]) <<  8) |
-                         std::stoi(tokens[2]) ;
+                          std::stoi(tokens[2]) ;
             }
 
             else if (tokens[0] == vlasm::i_add)
@@ -70,12 +71,6 @@ namespace violet
             return opcode;
         }
 
-        void die(const char *message)
-        {
-            std::cerr << message << std::endl;
-            exit(1);
-        }
-
         unsigned int parse_reg(std::string reg_str)
         {
             std::unordered_map<std::string, unsigned int>::const_iterator
@@ -83,6 +78,12 @@ namespace violet
 
             if (r == registers.end()) die("Invalid register");
             return r->second;
+        }
+
+        void die(const char *message)
+        {
+            std::cerr << message << std::endl;
+            exit(1);
         }
     }
 }

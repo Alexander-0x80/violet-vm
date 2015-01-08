@@ -28,24 +28,21 @@ namespace violet
         instruction instr;
 
         if (program.empty()) return 1;
-        while(running)
+        while(running && pc < program.size())
         {
             instr = decode(fetch());
             switch(instr.code)
             {
                 case i_halt:
                     running = false;
-                    std::cout << "Halt" << std::endl;
                     break;
 
                 case i_loadi:
-                    std::cout << "Loadi" << std::endl;
-                    regs[instr.r1] = instr.imm;
+                    regs[instr.r0] = instr.imm;
                     break;
 
                 case i_add:
-                    std::cout << "Add" << std::endl;
-                    regs[instr.r1] = regs[instr.r2] + regs[instr.r3];
+                    regs[instr.r0] = regs[instr.r1] + regs[instr.r2];
                     break;
             }
         }
@@ -72,9 +69,9 @@ namespace violet
         // Bits 7-0    Immediate value
 
         i.code = (opcode & 0xF000) >> 12;
-        i.r1   = (opcode & 0xF00)  >>  8;
-        i.r2   = (opcode & 0xF0)   >>  4;
-        i.r3   = (opcode & 0xF);
+        i.r0   = (opcode & 0xF00)  >>  8;
+        i.r1   = (opcode & 0xF0)   >>  4;
+        i.r2   = (opcode & 0xF);
         i.imm  = (opcode & 0xFF);
 
         return i;
