@@ -2,6 +2,7 @@
 =========
 
 > Toy virtual machine with 3 registers and 3 commands . it has no practical use, just plain fun .
+If you wish to hack on virtual machines , this is a simple starting point .
 
 ### Build :
     $ cmake CMakeLists.txt && make

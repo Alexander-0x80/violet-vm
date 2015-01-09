@@ -26,7 +26,7 @@ namespace violet
         std::vector<unsigned int> parse_source(const std::vector<std::string>);
         std::vector<std::string> parse_line(const std::string);
         unsigned int parse_tokens(const std::vector<std::string>);
-        unsigned int parse_reg(std::string);
+        unsigned int parse_reg(const std::string);
         void die(const char *);
     };
 
