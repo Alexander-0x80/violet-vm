@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
 {
     int vm_res;
     const std::vector<u16> program = utils::load_program_file(argv[1]);
-    Vm *vm = new Vm(program);
-    vm_res = vm->run();
+    Vm vm(program);
+    vm_res = vm.run();
 
-    for (auto r : vm->dump_regs())
+    for (auto r : vm.dump_regs())
     {
         std::cout << r << " ";
     }   std::cout << std::endl;

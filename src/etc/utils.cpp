@@ -19,14 +19,13 @@ namespace violet
                 return result;
             }
 
-            while(file.read((char*)bytes, 2))
+            while(file.read(reinterpret_cast<char*>(bytes), 2))
             {
                 // Little endian
                 instr = bytes[0] | bytes[1] << 8;
                 result.push_back(instr);
             }
 
-            file.close();
             return result;
         }
 
@@ -48,7 +47,6 @@ namespace violet
                 result.push_back(line);
             }
 
-            file.close();
             return result;
         }
 
@@ -68,7 +66,6 @@ namespace violet
                 out.write(reinterpret_cast<const char *>(&i), sizeof(u16));
             }
 
-            out.close();
             return 0;
         }
     }

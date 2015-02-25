@@ -52,21 +52,15 @@ namespace violet
 
     std::vector<u16> Vm::dump_regs() const
     {
-        std::vector<u16> rdump;
-        for (auto r: regs)
-        {
-            rdump.push_back(r);
-        }
-
-        return rdump;
+        return std::vector<u16>(std::begin(regs), std::end(regs));
     }
 
     instruction Vm::decode(const unsigned int opcode) const
     {
         instruction i;
-        // Bits 15-12  Instruction number
-        // Bits 11-8   Register number
-        // Bits 7-0    Immediate value
+        // Bits 15-12  (4bits) Instruction number
+        // Bits 11-8   (4bits) Register number
+        // Bits 7-0    (8bits) Immediate value
 
         i.code = (opcode & 0xF000) >> 12;
         i.r0   = (opcode & 0xF00)  >>  8;
